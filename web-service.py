@@ -29,9 +29,9 @@ def calc_result(yield1,module_temp,insolation,site):
     if site == "SiteA":
         Efficiency =  658.35 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0042)) / float(yield1)
     elif site == "SiteB":
-        Efficiency =  480.38 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0042)) / float(yield1)
+        Efficiency =  480.38 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0039)) / float(yield1)
     elif site == "SiteC":
-        Efficiency =  379.78 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0042)) / float(yield1)
+        Efficiency =  379.78 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.004)) / float(yield1)
 
     Efficiency = float("{0:.2f}".format(Efficiency))
     if Efficiency <= 30:
