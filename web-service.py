@@ -40,6 +40,31 @@ def calc_result(yield1,module_temp,insolation,site):
         message = "Your solar modules are good to be used"
     return render_template('result.html',efficiency = Efficiency,message = message)
 
+@app.route('/api/calc',methods = ['POST'])
+def api_calc():
+    req_body = request.get_json()
+    yield1 = req_body['yield']
+    module_temp = req_body['module_temp']
+    insolation = req_body['insolation']
+    site = req_body['site']
+    Efficiency = 0
+    message = "null"
+    if site == "SiteA":
+        Efficiency = float(yield1) / (658.35 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0042)))
+    elif site == "SiteB":
+        Efficiency =  float(yield1) / (480.38 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0039)))
+    elif site == "SiteC":
+        Efficiency =  float(yield1) / (379.78 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.004)))
+    else:
+        return jsonify('{"message": "Invalid Data", "severity": "danger"}')
+
+    Efficiency = float("{0:.3f}".format(Efficiency)) * 100
+    if Efficiency <= 30:
+        message = "Your solar modules need to be washed"
+    else:
+        message = "Your solar modules are good to be used"
+    return jsonify('{"message":' + message + ',"severity": "null","Efficiency": "placehold" }'.replace('placehold',str(Efficiency)))
+
 @app.errorhandler(400)
 def handle_invalid_req(somearg):
     return render_template("invalid_value.html")
