@@ -33,7 +33,7 @@ def calc_result(yield1,module_temp,insolation,site):
     elif site == "SiteC":
         Efficiency =  float(yield1) / (379.78 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.004)))
 
-    Efficiency = float("{0:.2f}".format(Efficiency))
+    Efficiency = float("{0:.2f}".format(Efficiency)) * 100
     if Efficiency <= 30:
         message = "Your solar modules need to be washed"
     else:
