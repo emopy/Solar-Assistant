@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Solar Calc</title>
+    <title>Solar Assistant | Calculator</title>
     <link href="calculator.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <ul>
       <!-- start of nav bar -->
       <div class="mainLogo">
         <nav>
-          <a href="index.html"><img src="images/logo.svg" style="width:30%"></a>
+          <a href="home.html"><img src="images/logo.svg" style="width:30%"></a>
         </nav>
       </div>
-      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="home.html">Home</a></li>
       <div class="topnav-centered">
         <li><a href="calculator.html">Calculator</a></li>
       </div>
