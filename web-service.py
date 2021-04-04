@@ -1,7 +1,6 @@
 from flask import *
 
 app = Flask('Solar-Assistant')
-app.secret_key = "lololololol"
 
 @app.route('/')
 def render_main():
