@@ -6,4 +6,5 @@ app = Flask('Solar-Assistant')
 def render_main():
   return render_template('index.html')
 
+
 app.run(debug=False)

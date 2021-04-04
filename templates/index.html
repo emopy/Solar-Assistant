@@ -15,12 +15,12 @@
           <a href="index.html"><img src="{{ url_for('static', filename='images/logo.svg') }}" style="width:30%"></a>
         </nav>
       </div>
-      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="{{ url_for('static', filename='html/aboutus.html') }}">About Us</a></li>
       <div class="topnav-centered">
-        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="{{ url_for('static', filename='html/calculator.html') }}">Calculator</a></li>
       </div>
       <div class="topnav-right">
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="{{ url_for('static', filename='html/contact.html') }}">Contact</a></li>
       </div>
       <!-- end of nav bar -->
     </ul>
