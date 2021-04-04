@@ -16,14 +16,33 @@ def calc():
         yield1 = request.form['entry.1994759724']
         Module_Temp = request.form['entry.1369317306']
         Insolation = request.form['entry.766253923']
-        print(yield1,Module_Temp,Insolation)
-        return redirect(url_for("calc_result",yield1 = yield1,module_temp = Module_Temp,insolation = Insolation))
+        Sites = request.form['Sites']
+        print(yield1,Module_Temp,Insolation,Sites)
+        return redirect(url_for("calc_result",yield1 = yield1,module_temp = Module_Temp,insolation = Insolation,site = Sites))
     else:
         return render_template('calculator.html')
 
-@app.route('/<yield1>?<module_temp>?<insolation>')
-def calc_result(yield1,module_temp,insolation):
-    return render_template('result.html',yield1 = yield1,module_temp = module_temp,insolation = insolation)
+@app.route('/<yield1>?<module_temp>?<insolation>?<site>')
+def calc_result(yield1,module_temp,insolation,site):
+    Efficiency = 0
+    message = "null"
+    if site == "SiteA":
+        Efficiency = int(yield1) / 658.35 * int(insolation) * (1+((int(module_temp) - 25) * -0.0042))
+    elif site == "SiteB":
+        Efficiency = int(yield1) / 480.38 * int(insolation) * (1 + ((int(module_temp) - 25) * -0.0042))
+    elif site == "SiteC":
+        Efficiency = int(yield1) / 379.78 * int(insolation) * (1 + ((int(module_temp) - 25) * -0.0042))
+
+    Efficiency = float("{0:.2f}".format(Efficiency))
+    if Efficiency <= 30:
+        message = "Your solar modules need to be washed"
+    else:
+        message = "Your solar modules are good to be used"
+    return render_template('result.html',efficiency = Efficiency,message = message)
+
+@app.errorhandler(400)
+def handle_invalid_req(somearg):
+    return render_template("invalid_value.html")
 
 
 app.run(debug=False)
