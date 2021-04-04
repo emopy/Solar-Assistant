@@ -27,7 +27,7 @@ def calc_result(yield1,module_temp,insolation,site):
     Efficiency = 0
     message = "null"
     if site == "SiteA":
-        Efficiency = float(yield1) / 658.35 * float(insolation) * (1+((float(module_temp) - 25) * -0.0042))
+        Efficiency = float(yield1) / 658.35 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0042))
     elif site == "SiteB":
         Efficiency = float(yield1) / 480.38 * float(insolation) * (1 + ((float(module_temp) - 25) * -0.0042))
     elif site == "SiteC":
