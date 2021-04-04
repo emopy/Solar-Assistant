@@ -8,3 +8,7 @@ Our rest api is very simple all you need to do is to send a post request to your
 "severity": "null",
 "Efficiency": "0.2" 
 }
+
+
+# Info
+this project won a hackathon by aplha hacks
